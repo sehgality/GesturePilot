@@ -1,6 +1,8 @@
 # Computer Controller 🤙
 
-Control your laptop remotely using body gestures, detected in real time by a **Jetson Nano** running PoseNet. Gesture events are sent over UDP to your laptop, which executes the corresponding keyboard/media actions — no physical remote needed.
+Want to give more dynamic, hands-free presentations? Too comfortable on the couch to reach your laptop? Just wave.
+
+Computer Controller lets you control your laptop with nothing but your body. Detected in real time by a **Jetson Nano** running PoseNet, your gestures are sent over WiFi to your laptop — skip slides, pause your show, adjust volume, and never touch a thing. Walk around the room and own the stage during presentations, or kick back on the couch and control your video without reaching for a remote.
 
 ---
 

@@ -26,11 +26,13 @@ from dashboard import get_keypoint, push_event, update_dashboard_frame
 # CONFIGURATION
 # -------------------------------------------------------
 parser = argparse.ArgumentParser(description="Gesture controller for laptop")
-parser.add_argument("--ip", required=True, help="Laptop IP address (e.g. 192.168.1.5)")
+parser.add_argument("--ip",  required=True, help="Laptop IP address (e.g. 192.168.1.5)")
+parser.add_argument("--key", required=True, help="Shared secret key (must match laptop_listener)")
 args = parser.parse_args()
 
 LAPTOP_IP   = args.ip
 LAPTOP_PORT = 5005
+SECRET_KEY  = args.key
 
 print(f"Targeting laptop at {LAPTOP_IP}:{LAPTOP_PORT}")
 
@@ -63,7 +65,7 @@ PAUSE_HOLD_FRAMES    = 10    # frames both hands must be held up before firing
 # True  = prints [DEBUG] command names, no UDP sent
 # False = sends real commands to laptop
 # -------------------------------------------------------
-DEBUG_MODE = True
+DEBUG_MODE = False
 
 # -------------------------------------------------------
 # STATE
@@ -86,7 +88,8 @@ def send_command(command):
     if DEBUG_MODE:
         print(f"[DEBUG] {command}")
     else:
-        sock.sendto(command.encode("utf-8"), (LAPTOP_IP, LAPTOP_PORT))
+        payload = f"{SECRET_KEY}:{command}"
+        sock.sendto(payload.encode("utf-8"), (LAPTOP_IP, LAPTOP_PORT))
         print(f"[SENT] {command}")
 
 # -------------------------------------------------------

@@ -13,10 +13,17 @@ import sys
 # -------------------------------------------------------
 # SETUP — auto-detect OS on startup
 # -------------------------------------------------------
+import argparse
+
 print("=== Gesture Remote Listener Setup ===")
+
+parser = argparse.ArgumentParser(description="Gesture remote listener")
+parser.add_argument("--key", required=True, help="Shared secret key (must match jetson_gestures)")
+args = parser.parse_args()
 
 LISTEN_IP   = "0.0.0.0"
 LISTEN_PORT = 5005
+SECRET_KEY  = args.key
 
 os_choice = "mac" if sys.platform == "darwin" else "windows"
 print(f"Detected OS: {os_choice}")
@@ -68,8 +75,14 @@ while True:
     data, addr = sock.recvfrom(1024)
 
     # Decode the bytes into a string and strip any whitespace
-    command = data.decode("utf-8").strip()
+    message = data.decode("utf-8").strip()
 
+    # Validate secret key
+    if ":" not in message or message.split(":", 1)[0] != SECRET_KEY:
+        print(f"  Rejected packet from {addr} — invalid key")
+        continue
+
+    command = message.split(":", 1)[1]
     print(f"Received command: '{command}' from {addr}")
 
     # Look up the command and execute it if recognized
