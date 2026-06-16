@@ -1,8 +1,8 @@
-# Computer Controller 🤙
+# GesturePilot 🤙
 
 Want to give more dynamic, hands-free presentations? Too comfortable on the couch to reach your laptop? Just wave.
 
-Computer Controller lets you control your laptop with nothing but your body. Detected in real time by a **Jetson Nano** running PoseNet, your gestures are sent over WiFi to your laptop — skip slides, pause your show, adjust volume, and never touch a thing. Walk around the room and own the stage during presentations, or kick back on the couch and control your video without reaching for a remote.
+GesturePilot lets you control your laptop with nothing but your body. Detected in real time by a **Jetson Nano** running PoseNet, your gestures are sent over WiFi to your laptop — skip slides, pause your show, adjust volume, and never touch a thing. Walk around the room and own the stage during presentations, or kick back on the couch and control your video without reaching for a remote.
 
 ---
 
@@ -57,8 +57,8 @@ Computer Controller lets you control your laptop with nothing but your body. Det
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/sehgality/computer-controller.git
-cd computer-controller
+git clone https://github.com/sehgality/GesturePilot.git
+cd GesturePilot
 ```
 
 ### 2. Connect the Jetson Nano via VS Code Remote SSH
@@ -91,12 +91,12 @@ Look for the IPv4 address under your WiFi adapter.
 ### On the Jetson Nano
 
 ```bash
-python3 ~/jetson_gestures.py --ip <your-laptop-ip>
+python3 ~/jetson_gestures.py --ip <your-laptop-ip> --key <your-secret-key>
 ```
 
 Example:
 ```bash
-python3 ~/jetson_gestures.py --ip 10.0.0.104
+python3 ~/jetson_gestures.py --ip 10.0.0.56 --key mypassword
 ```
 
 Once running, open the live dashboard in your browser:
@@ -107,10 +107,23 @@ http://<jetson-ip>:8080
 ### On the Laptop
 
 ```bash
-python3 laptop_listener.py
+python3 laptop_listener.py --key <your-secret-key>
 ```
 
-The script automatically detects whether you're on Mac or Windows and uses the appropriate method for each command.
+Example:
+```bash
+python3 laptop_listener.py --key mypassword
+```
+
+The `--key` must match exactly on both sides or commands will be rejected. The script automatically detects whether you're on Mac or Windows and uses the appropriate method for each command.
+
+---
+
+## Security — Secret Key
+
+GesturePilot uses a shared secret key to authenticate UDP packets. Any packet received without the correct key is rejected, preventing other devices on the same network from sending commands to your laptop.
+
+Both the Jetson and laptop must be started with the same `--key` value. Choose any string you like — just keep it consistent.
 
 ---
 
@@ -140,7 +153,7 @@ DEBUG_MODE = False
 ## Project Structure
 
 ```
-computer-controller/
+GesturePilot/
 ├── jetson_gestures.py   # Runs on Jetson — gesture detection + UDP sender
 ├── dashboard.py         # Runs on Jetson — live browser dashboard (imported by jetson_gestures.py)
 └── laptop_listener.py   # Runs on laptop — receives UDP and executes keypresses
