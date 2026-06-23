@@ -1,4 +1,4 @@
-# GesturePilot 🤙
+# GesturePilot 
 
 Want to give more dynamic, hands-free presentations? Too comfortable on the couch to reach your laptop? Just wave.
 
