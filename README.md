@@ -35,6 +35,7 @@ GesturePilot lets you control your laptop with nothing but your body. Detected i
 
 ### Jetson Nano
 - [NVIDIA Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano-developer-kit)
+- Jetson inference package: https://github.com/dusty-nv/jetson-inference
 - JetPack SDK (includes `jetson.inference` and `jetson.utils`)
 - USB or CSI camera connected to the Nano
 - Python 3 with the following packages:
