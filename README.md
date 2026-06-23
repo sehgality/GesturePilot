@@ -64,8 +64,7 @@ cd GesturePilot
 
 ### 2. Connect the Jetson Nano via VS Code Remote SSH
 
-- Install the [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh) extension in VS Code
-- Connect to your Jetson: `ssh aidan@<jetson-ip>`
+- Connect to your Jetson: `ssh username@<jetson-ip>`
 - Copy `jetson_gestures.py` and `dashboard.py` to the Jetson (e.g. your home directory `~/`)
 
 ```bash
