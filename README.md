@@ -13,10 +13,15 @@ https://youtu.be/T-TqokT0JZE
 Timestamps:
 
 Project Demonstration - 0:00
+
 GitHub Overview - 3:14
+
 Dashboard.py Demo - 3:26
+
 jetson_gestures.py Explanation - 8:18
+
 dashboard.py Explanation - 22:29
+
 laptop_listener.py - 23:51
 
 ## How It Works
