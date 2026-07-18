@@ -10,7 +10,7 @@ GesturePilot lets you control your laptop with nothing but your body. Detected i
 
 [![Watch the video](https://img.youtube.com/vi/T-TqokT0JZE/maxresdefault.jpg)](https://www.youtube.com/watch?v=T-TqokT0JZE)
 
-Timestamps:
+## Timestamps: 
 
 Project Demonstration - 0:00
 
@@ -23,6 +23,8 @@ jetson_gestures.py Explanation - 8:18
 dashboard.py Explanation - 22:29
 
 laptop_listener.py - 23:51
+
+__
 
 ## How It Works
 
