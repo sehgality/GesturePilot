@@ -8,9 +8,9 @@ GesturePilot lets you control your laptop with nothing but your body. Detected i
 
 ## Video Demonstration
 
-[![Watch the video](https://img.youtube.com/vi/T-TqokT0JZE/maxresdefault.jpg)](https://www.youtube.com/watch?v=T-TqokT0JZE)
+https://www.youtube.com/watch?v=T-TqokT0JZE
 
-## Timestamps: 
+Timestamps: 
 
 Project Demonstration - 0:00
 
